@@ -1,0 +1,98 @@
+{
+  "id": "-m6XWIRzBrdQpcB0LGqxr",
+  "theme": {
+    "shadow": {
+      "h": 0,
+      "v": 0,
+      "blur": 10,
+      "color": "#000000"
+    },
+    "outline": {
+      "color": "#d14424",
+      "style": "solid",
+      "width": 2
+    },
+    "fontName": "Microsoft YaHei",
+    "fontColor": "#333333",
+    "themeColors": [
+      "#5b9bd5",
+      "#ed7d31",
+      "#a5a5a5",
+      "#ffc000",
+      "#4472c4"
+    ],
+    "backgroundColor": "#ffffff"
+  },
+  "elements": [
+    {
+      "id": "text_O3n8rUsz",
+      "top": 50,
+      "left": 60,
+      "type": "text",
+      "width": 880,
+      "height": 76,
+      "rotate": 0,
+      "content": "<p style=\"font-size:32px\"><strong>二叉排序树的查找操作</strong></p>",
+      "defaultColor": "#333333",
+      "defaultFontName": "Microsoft YaHei"
+    },
+    {
+      "id": "text_C4Z1Rv0j",
+      "top": 150,
+      "left": 60,
+      "type": "text",
+      "width": 880,
+      "height": 220,
+      "rotate": 0,
+      "content": "<p style=\"font-size:18px\">首先，我们来理解二叉排序树（Binary Search Tree，BST）的定义和性质。BST是一种特殊的二叉树，其中每个节点的左子树中的所有节点值都小于该节点的值，而右子树中的所有节点值都大于该节点的值。</p><p style=\"font-size:18px\">二叉排序树的查找操作是一个非常关键的操作。该操作的目标是从树中找到具有特定值的节点。具体步骤如下：</p>",
+      "defaultColor": "#333333",
+      "defaultFontName": "Microsoft YaHei"
+    },
+    {
+      "id": "image_kDEwNGYL",
+      "alt": "BST查找操作示例图",
+      "src": "https://example.com/bst-search-image.png",
+      "top": 350,
+      "left": 60,
+      "type": "image",
+      "width": 820,
+      "height": 200,
+      "rotate": 0,
+      "fixedRatio": true
+    },
+    {
+      "id": "text_ksw1XsnZ",
+      "top": 150,
+      "left": 520,
+      "type": "text",
+      "width": 800,
+      "height": 60,
+      "rotate": 0,
+      "content": "<p style=\"font-size:18px\"><strong>总结：</strong> 通过理解BST的定义和性质，我们可以方便地实现BST的查找操作。查找操作的关键是利用BST的有序性，从而高效地找到目标节点。</p>",
+      "defaultColor": "#333333",
+      "defaultFontName": "Microsoft YaHei"
+    },
+    {
+      "id": "shape_r3GebfNc",
+      "top": 160,
+      "fill": "#ed7d31",
+      "left": 46,
+      "path": "M 0 0 L 1 0 L 1 1 L 0 1 Z",
+      "type": "shape",
+      "width": 4,
+      "height": 46,
+      "rotate": 0,
+      "viewBox": [
+        1,
+        1
+      ],
+      "fixedRatio": false
+    }
+  ],
+  "background": {
+    "type": "solid",
+    "color": "#ffffff"
+  },
+  "viewportSize": 1000,
+  "viewportRatio": 0.5625
+}

@@ -1,0 +1,378 @@
+[
+  {
+    "title": "什么是01背包算法",
+    "canvas": {
+      "id": "DJ4RXy-66rLV5cFf6WWJw",
+      "theme": {
+        "shadow": {
+          "h": 0,
+          "v": 0,
+          "blur": 10,
+          "color": "#000000"
+        },
+        "outline": {
+          "color": "#d14424",
+          "style": "solid",
+          "width": 2
+        },
+        "fontName": "Microsoft YaHei",
+        "fontColor": "#333333",
+        "themeColors": [
+          "#5b9bd5",
+          "#ed7d31",
+          "#a5a5a5",
+          "#ffc000",
+          "#4472c4"
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      "elements": [
+        {
+          "id": "text_053RV9KW",
+          "top": 50,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 76,
+          "rotate": 0,
+          "content": "<p style=\"font-size:32px\"><strong>什么是01背包算法</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_WNL-AkUv",
+          "top": 150,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 240,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>教学主题：</strong>01背包算法。</p><p style=\"font-size:18px\"><strong>知识点：</strong>01背包问题的定义、动态规划解法的基本思路、01背包问题的动态规划表的构建、01背包问题的代码实现。</p><p style=\"font-size:18px\"><strong>讲解依据：</strong>01背包问题是一种经典的动态规划问题，其核心在于如何在给定容量的背包中放入物品，使得总价值最大。动态规划解法通过构建一个二维数组来记录在不同容量下能获得的最大价值，从而避免了重复计算，提高了效率。</p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_8u_adlt-",
+          "top": 450,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 150,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>关键点：</strong></p><ol><li>01背包问题的定义</li><li>动态规划解法的基本思路</li><li>01背包问题的动态规划表的构建</li><li>01背包问题的代码实现</li></ol>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#ffffff"
+      },
+      "viewportSize": 1000,
+      "viewportRatio": 0.5625
+    }
+  },
+  {
+    "title": "01背包算法的边界条件",
+    "canvas": {
+      "id": "2jA0Xie3xPxAqUgni-FgW",
+      "theme": {
+        "shadow": {
+          "h": 0,
+          "v": 0,
+          "blur": 10,
+          "color": "#000000"
+        },
+        "outline": {
+          "color": "#d14424",
+          "style": "solid",
+          "width": 2
+        },
+        "fontName": "Microsoft YaHei",
+        "fontColor": "#333333",
+        "themeColors": [
+          "#5b9bd5",
+          "#ed7d31",
+          "#a5a5a5",
+          "#ffc000",
+          "#4472c4"
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      "elements": [
+        {
+          "id": "text_5iuORz9z",
+          "top": 50,
+          "left": 100,
+          "type": "text",
+          "width": 800,
+          "height": 76,
+          "rotate": 0,
+          "content": "<p style=\"font-size:32px\"><strong>01背包算法的边界条件</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_WO8zS1K-",
+          "top": 150,
+          "left": 100,
+          "type": "text",
+          "width": 800,
+          "height": 130,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\">01背包问题是一种经典的动态规划问题，其核心在于如何在给定容量的背包中放入物品，使得总价值最大。</p><p style=\"font-size:18px\">动态规划解法通过构建一个二维数组来记录在不同容量下能获得的最大价值，从而避免了重复计算，提高了效率。</p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_KDi8HkTL",
+          "top": 290,
+          "left": 100,
+          "type": "text",
+          "width": 800,
+          "height": 60,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\">学习目标：</p><ul><li style=\"font-size:18px\">了解01背包问题的定义</li><li style=\"font-size:18px\">掌握动态规划解法的基本思路</li><li style=\"font-size:18px\">学会构建01背包问题的动态规划表</li><li style=\"font-size:18px\">能够实现01背包问题的代码</li></ul>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#ffffff"
+      },
+      "viewportSize": 1000,
+      "viewportRatio": 0.5625
+    }
+  },
+  {
+    "title": "01背包算法的优化",
+    "canvas": {
+      "id": "zF9lcjMF0t-MGO794aFab",
+      "theme": {
+        "shadow": {
+          "h": 0,
+          "v": 0,
+          "blur": 10,
+          "color": "#000000"
+        },
+        "outline": {
+          "color": "#d14424",
+          "style": "solid",
+          "width": 2
+        },
+        "fontName": "Microsoft YaHei",
+        "fontColor": "#333333",
+        "themeColors": [
+          "#5b9bd5",
+          "#ed7d31",
+          "#a5a5a5",
+          "#ffc000",
+          "#4472c4"
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      "elements": [
+        {
+          "id": "text_Ra6z-mP1",
+          "top": 50,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 76,
+          "rotate": 0,
+          "content": "<p style=\"font-size:32px\"><strong>01背包算法的优化</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_4HraF5Ht",
+          "top": 130,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 46,
+          "rotate": 0,
+          "content": "<p style=\"font-size:24px\"><strong>教学主题：01背包算法</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_jdS9YN4X",
+          "top": 180,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 102,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\">知识点：01背包问题的定义、动态规划解法的基本思路、01背包问题的动态规划表的构建、01背包问题的代码实现。</p><p style=\"font-size:18px\">讲解依据：01背包问题是一种经典的动态规划问题，其核心在于如何在给定容量的背包中放入物品，使得总价值最大。动态规划解法通过构建一个二维数组来记录在不同容量下能获得的最大价值，从而避免了重复计算，提高了效率。</p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_u7BY4pBl",
+          "top": 290,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 52,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>1. 01背包问题的定义</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_YhSS-BPG",
+          "top": 360,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 52,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>2. 动态规划解法的基本思路</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_PAOIrWOq",
+          "top": 430,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 52,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>3. 01背包问题的动态规划表的构建</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_B7qvb0N3",
+          "top": 500,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 52,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>4. 01背包问题的代码实现</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#ffffff"
+      },
+      "viewportSize": 1000,
+      "viewportRatio": 0.5625
+    }
+  },
+  {
+    "title": "01背包算法的应用",
+    "canvas": {
+      "id": "VaDliU3v9UOe18zqQKXnd",
+      "theme": {
+        "shadow": {
+          "h": 0,
+          "v": 0,
+          "blur": 10,
+          "color": "#000000"
+        },
+        "outline": {
+          "color": "#d14424",
+          "style": "solid",
+          "width": 2
+        },
+        "fontName": "Microsoft YaHei",
+        "fontColor": "#333333",
+        "themeColors": [
+          "#5b9bd5",
+          "#ed7d31",
+          "#a5a5a5",
+          "#ffc000",
+          "#4472c4"
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      "elements": [
+        {
+          "id": "text_5MXq56km",
+          "top": 50,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 76,
+          "rotate": 0,
+          "content": "<p style=\"font-size:32px\"><strong>01背包算法的应用</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_9qHKg59-",
+          "top": 150,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 130,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\">01背包问题是一种经典的动态规划问题，其核心在于如何在给定容量的背包中放入物品，使得总价值最大。</p><p style=\"font-size:18px\">动态规划解法通过构建一个二维数组来记录在不同容量下能获得的最大价值，从而避免了重复计算，提高了效率。</p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_FwHWHeO-",
+          "top": 300,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 50,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>1. 01背包问题的定义</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_edUPhsuh",
+          "top": 380,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 50,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>2. 动态规划解法的基本思路</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_Ep3f5DRV",
+          "top": 460,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 50,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>3. 01背包问题的动态规划表的构建</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        },
+        {
+          "id": "text_tlpqIYV7",
+          "top": 540,
+          "left": 60,
+          "type": "text",
+          "width": 880,
+          "height": 50,
+          "rotate": 0,
+          "content": "<p style=\"font-size:18px\"><strong>4. 01背包问题的代码实现</strong></p>",
+          "defaultColor": "#333333",
+          "defaultFontName": "Microsoft YaHei"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#ffffff"
+      },
+      "viewportSize": 1000,
+      "viewportRatio": 0.5625
+    }
+  }
+]

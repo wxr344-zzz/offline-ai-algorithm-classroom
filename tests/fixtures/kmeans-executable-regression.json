@@ -1,0 +1,149 @@
+{
+  "program": {
+    "valid_algorithm": true,
+    "title": "K-Means 聚类",
+    "explanation": "使用Lloyd迭代。初始中心取输入中前K个点；按欧氏距离平方分配标签，距离相同时取较小簇索引；新中心为簇内各维坐标的均值，空簇保留原中心。中心不变或完成20轮时停止，最后按最终中心重新分配标签。空数据或K不为正时返回两个空列表，K大于点数时按点数处理。",
+    "input_description": "入口是JSON对象，data字段是至多8个二维整数点的列表，K字段是所需簇数。不要把入口对象与data字段的数组混淆。",
+    "output_description": "返回[centers,labels]：centers按簇索引排列，labels是与输入点顺序一致的从0开始的簇索引列表。初始化、距离平局、空簇和终止规则按explanation执行。",
+    "default_input": {
+      "data": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "K": 2
+    },
+    "source": "def solve(data):\n    points = data.get('data', [])\n    k = data.get('K', 0)\n    if not points or k <= 0:\n        return [[], []]\n    k = min(k, len(points))\n    dimension = len(points[0])\n    centers = [list(point) for point in points[:k]]\n    def assign(current):\n        return [min(range(k), key=lambda c: sum((point[d] - current[c][d]) ** 2 for d in range(dimension))) for point in points]\n    for iteration in range(20):\n        labels = assign(centers)\n        groups = [[point for i, point in enumerate(points) if labels[i] == c] for c in range(k)]\n        updated = [[sum(point[d] for point in groups[c]) / len(groups[c]) for d in range(dimension)] if groups[c] else list(centers[c]) for c in range(k)]\n        if updated == centers:\n            break\n        centers = updated\n    return [centers, assign(centers)]\n",
+    "validation_inputs": [
+      {
+        "data": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "K": 2
+      },
+      {
+        "data": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            10,
+            12
+          ]
+        ],
+        "K": 2
+      },
+      {
+        "data": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "K": 3
+      },
+      {
+        "data": [],
+        "K": 2
+      },
+      {
+        "data": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            10
+          ]
+        ],
+        "K": 2
+      },
+      {
+        "data": [
+          [
+            1,
+            2
+          ]
+        ],
+        "K": 1
+      }
+    ],
+    "pointer_names": [
+      "i",
+      "c",
+      "d",
+      "iteration"
+    ]
+  },
+  "oracle": "def labels_for(points, centers):\n    labels = []\n    for point in points:\n        best = 0\n        best_distance = None\n        for c, center in enumerate(centers):\n            distance = 0\n            for d in range(len(point)):\n                distance += (point[d] - center[d]) ** 2\n            if best_distance is None or distance < best_distance:\n                best = c\n                best_distance = distance\n        labels.append(best)\n    return labels\n\ndef solve(data):\n    points = data.get('data', [])\n    count = data.get('K', 0)\n    if len(points) == 0 or count <= 0:\n        return [[], []]\n    count = min(count, len(points))\n    centers = [list(points[c]) for c in range(count)]\n    iteration = 0\n    while iteration < 20:\n        labels = labels_for(points, centers)\n        totals = [[0 for d in range(len(points[0]))] for c in range(count)]\n        sizes = [0 for c in range(count)]\n        for i in range(len(points)):\n            c = labels[i]\n            sizes[c] += 1\n            for d in range(len(points[i])):\n                totals[c][d] += points[i][d]\n        updated = [list(center) for center in centers]\n        for c in range(count):\n            if sizes[c] > 0:\n                for d in range(len(points[0])):\n                    updated[c][d] = totals[c][d] / sizes[c]\n        stable = updated == centers\n        centers = updated\n        iteration += 1\n        if stable:\n            break\n    return [centers, labels_for(points, centers)]\n"
+}

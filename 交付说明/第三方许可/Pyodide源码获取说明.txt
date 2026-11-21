@@ -1,0 +1,2 @@
+Pyodide 0.29.3 以 MPL-2.0 发布。本包 public/vendor/eduplus/pyodide 中的 JS/WASM 文件未经修改，
+对应源码可从 https://github.com/pyodide/pyodide/tree/0.29.3 获取；其内含的其他软件包分别适用各自许可。

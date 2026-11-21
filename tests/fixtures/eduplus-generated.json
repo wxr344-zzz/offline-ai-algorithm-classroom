@@ -1,0 +1,323 @@
+{
+  "publicCourse": {
+    "schemaVersion": "1.0",
+    "courseId": "course-1",
+    "topic": "列表求和",
+    "requiresLab": true,
+    "lessonPlan": {
+      "title": "列表求和",
+      "objectives": [
+        "实现累加"
+      ],
+      "knowledgePoints": [
+        "边界"
+      ]
+    },
+    "commonMistakes": [],
+    "generationStatus": "generated",
+    "qualityStatus": "static-validated",
+    "scenes": [
+      {
+        "schemaVersion": "1.0",
+        "courseId": "course-1",
+        "sceneId": "guided-scene-1",
+        "language": "python",
+        "markdownContent": "# 列表求和\n\n返回整数列表之和，允许空列表与负数。\n\n## 分步任务\n1. 累加：逐项累加",
+        "interactiveCode": "class Solution:\n    def solve(self, nums: list[int]) -> int:\n        # TODO\n        raise NotImplementedError\n",
+        "problem": {
+          "problemId": "problem-1",
+          "problemVersion": 1,
+          "title": "列表求和",
+          "instructions": "返回整数列表之和，允许空列表与负数。",
+          "difficulty": "Easy",
+          "constraints": [
+            "参数为整数列表"
+          ],
+          "entryPoint": {
+            "className": "Solution",
+            "methodName": "solve",
+            "parameters": [
+              {
+                "name": "nums",
+                "type": "list[int]"
+              }
+            ],
+            "returnType": "int"
+          },
+          "publicTestCases": [
+            {
+              "caseId": "public-normal",
+              "inputs": {
+                "nums": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "expected": 6,
+              "description": "公开示例"
+            }
+          ],
+          "executionPolicy": {
+            "timeoutMs": 3000,
+            "maxOutputChars": 20000,
+            "networkAllowed": false,
+            "comparison": "exact"
+          }
+        },
+        "sceneType": "guided-lab",
+        "template": "guided-lab-v1",
+        "teachingSteps": [
+          {
+            "stepId": "step-1",
+            "title": "累加",
+            "instruction": "逐项累加",
+            "hint": "从 0 开始"
+          }
+        ]
+      },
+      {
+        "schemaVersion": "1.0",
+        "courseId": "course-1",
+        "sceneId": "oj-scene-1",
+        "language": "python",
+        "markdownContent": "# 列表求和\n\n返回整数列表之和，允许空列表与负数。",
+        "interactiveCode": "class Solution:\n\n    def solve(self, nums: list[int]) -> int:\n        pass\n",
+        "problem": {
+          "problemId": "problem-1",
+          "problemVersion": 1,
+          "title": "列表求和",
+          "instructions": "返回整数列表之和，允许空列表与负数。",
+          "difficulty": "Easy",
+          "constraints": [
+            "参数为整数列表"
+          ],
+          "entryPoint": {
+            "className": "Solution",
+            "methodName": "solve",
+            "parameters": [
+              {
+                "name": "nums",
+                "type": "list[int]"
+              }
+            ],
+            "returnType": "int"
+          },
+          "publicTestCases": [
+            {
+              "caseId": "public-normal",
+              "inputs": {
+                "nums": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "expected": 6,
+              "description": "公开示例"
+            }
+          ],
+          "executionPolicy": {
+            "timeoutMs": 3000,
+            "maxOutputChars": 20000,
+            "networkAllowed": false,
+            "comparison": "exact"
+          }
+        },
+        "sceneType": "oj-lab",
+        "template": "oj-lab-v1"
+      }
+    ]
+  },
+  "privateOutput": {
+    "schema_version": "1.0",
+    "course_id": "course-1",
+    "topic": "列表求和",
+    "requires_lab": true,
+    "lesson_plan": {
+      "title": "列表求和",
+      "objectives": [
+        "实现累加"
+      ],
+      "knowledge_points": [
+        "边界"
+      ]
+    },
+    "common_mistakes": [],
+    "lab": {
+      "title": "列表求和",
+      "instructions": "返回整数列表之和，允许空列表与负数。",
+      "files": {
+        "solution.py": "class Solution:\n    def solve(self, nums: list[int]) -> int:\n        # TODO\n        raise NotImplementedError\n",
+        "test_solution.py": "# 服务端/教师评测资产\nimport pytest\nfrom solution import Solution\n\ndef test_case_0():\n    assert Solution().solve(**{'nums': [1, 2, 3]}) == 6\n\ndef test_case_1():\n    assert Solution().solve(**{'nums': []}) == 0\n\ndef test_case_2():\n    assert Solution().solve(**{'nums': [-1, -2]}) == -3\n\ndef test_case_3():\n    assert Solution().solve(**{'nums': [-1, 1]}) == 0\n"
+      },
+      "reference_solution": "class Solution:\n    def solve(self, nums: list[int]) -> int:\n        return sum(nums)  # REFERENCE_SENTINEL\n",
+      "grading": {
+        "command": [
+          "python",
+          "-m",
+          "pytest",
+          "-q",
+          "test_solution.py"
+        ],
+        "working_directory": "实验文件所在目录",
+        "pass_condition": "全部测试通过，pytest 退出码为 0",
+        "criteria": [
+          "公开示例",
+          "HIDDEN_DESCRIPTION_SENTINEL",
+          "负数",
+          "混合"
+        ]
+      }
+    },
+    "problem": {
+      "guided_scene": {
+        "schemaVersion": "1.0",
+        "courseId": "course-1",
+        "sceneId": "guided-scene-1",
+        "language": "python",
+        "markdownContent": "# 列表求和\n\n返回整数列表之和，允许空列表与负数。\n\n## 分步任务\n1. 累加：逐项累加",
+        "interactiveCode": "class Solution:\n    def solve(self, nums: list[int]) -> int:\n        # TODO\n        raise NotImplementedError\n",
+        "problem": {
+          "problemId": "problem-1",
+          "problemVersion": 1,
+          "title": "列表求和",
+          "instructions": "返回整数列表之和，允许空列表与负数。",
+          "difficulty": "Easy",
+          "constraints": [
+            "参数为整数列表"
+          ],
+          "entryPoint": {
+            "className": "Solution",
+            "methodName": "solve",
+            "parameters": [
+              {
+                "name": "nums",
+                "type": "list[int]"
+              }
+            ],
+            "returnType": "int"
+          },
+          "publicTestCases": [
+            {
+              "caseId": "public-normal",
+              "inputs": {
+                "nums": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "expected": 6,
+              "description": "公开示例"
+            }
+          ],
+          "executionPolicy": {
+            "timeoutMs": 3000,
+            "maxOutputChars": 20000,
+            "networkAllowed": false,
+            "comparison": "exact"
+          }
+        },
+        "sceneType": "guided-lab",
+        "template": "guided-lab-v1",
+        "teachingSteps": [
+          {
+            "stepId": "step-1",
+            "title": "累加",
+            "instruction": "逐项累加",
+            "hint": "从 0 开始"
+          }
+        ]
+      },
+      "oj_scene": {
+        "schemaVersion": "1.0",
+        "courseId": "course-1",
+        "sceneId": "oj-scene-1",
+        "language": "python",
+        "markdownContent": "# 列表求和\n\n返回整数列表之和，允许空列表与负数。",
+        "interactiveCode": "class Solution:\n\n    def solve(self, nums: list[int]) -> int:\n        pass\n",
+        "problem": {
+          "problemId": "problem-1",
+          "problemVersion": 1,
+          "title": "列表求和",
+          "instructions": "返回整数列表之和，允许空列表与负数。",
+          "difficulty": "Easy",
+          "constraints": [
+            "参数为整数列表"
+          ],
+          "entryPoint": {
+            "className": "Solution",
+            "methodName": "solve",
+            "parameters": [
+              {
+                "name": "nums",
+                "type": "list[int]"
+              }
+            ],
+            "returnType": "int"
+          },
+          "publicTestCases": [
+            {
+              "caseId": "public-normal",
+              "inputs": {
+                "nums": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "expected": 6,
+              "description": "公开示例"
+            }
+          ],
+          "executionPolicy": {
+            "timeoutMs": 3000,
+            "maxOutputChars": 20000,
+            "networkAllowed": false,
+            "comparison": "exact"
+          }
+        },
+        "sceneType": "oj-lab",
+        "template": "oj-lab-v1"
+      },
+      "hidden_test_cases": [
+        {
+          "caseId": "HIDDEN_CASE_SENTINEL",
+          "inputs": {
+            "nums": []
+          },
+          "expected": 0,
+          "description": "HIDDEN_DESCRIPTION_SENTINEL"
+        },
+        {
+          "caseId": "hidden-negative",
+          "inputs": {
+            "nums": [
+              -1,
+              -2
+            ]
+          },
+          "expected": -3,
+          "description": "负数"
+        },
+        {
+          "caseId": "hidden-mixed",
+          "inputs": {
+            "nums": [
+              -1,
+              1
+            ]
+          },
+          "expected": 0,
+          "description": "混合"
+        }
+      ],
+      "reference_solution": "class Solution:\n    def solve(self, nums: list[int]) -> int:\n        return sum(nums)  # REFERENCE_SENTINEL\n",
+      "pytest_source": "# 服务端/教师评测资产\nimport pytest\nfrom solution import Solution\n\ndef test_case_0():\n    assert Solution().solve(**{'nums': [1, 2, 3]}) == 6\n\ndef test_case_1():\n    assert Solution().solve(**{'nums': []}) == 0\n\ndef test_case_2():\n    assert Solution().solve(**{'nums': [-1, -2]}) == -3\n\ndef test_case_3():\n    assert Solution().solve(**{'nums': [-1, 1]}) == 0\n",
+      "quality_status": "static-validated",
+      "oj_assessment": null
+    },
+    "status": "ready"
+  }
+}

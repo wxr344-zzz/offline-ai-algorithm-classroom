@@ -1,0 +1,3 @@
+-r requirements-notebook.txt
+nbclient>=0.10,<1
+ipykernel>=6.29,<8

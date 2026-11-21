@@ -1,0 +1,25 @@
+/** Maintained Two Sum visualizations. No generated runtime, CDN or Python execution. */
+export function isTwoSumTopic(text: string): boolean {
+  if (/标量|两个整数相加|a\s*\+\s*b/i.test(text) && !/数组|下标|target/i.test(text)) return false;
+  return /两数之和|两数加和(?:算法)?|two[ -]?sum/i.test(text);
+}
+
+export function twoSumWidget(kind: 'simulation' | 'game'): string {
+  const game = kind === 'game';
+  return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><style>
+  *{box-sizing:border-box}body{margin:0;background:#f8fafc;color:#172033;font:17px system-ui;padding:24px}h1{font-size:26px;margin:0 0 12px}main{max-width:1000px;margin:auto}label{display:inline-flex;gap:8px;align-items:center;margin:8px}input{padding:10px;border:1px solid #94a3b8;border-radius:8px;width:220px}#target{width:100px}button{padding:10px 16px;border:1px solid #94a3b8;border-radius:9px;background:white;cursor:pointer;margin:6px}button:disabled{opacity:.45;cursor:default}.cells{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}.cell{min-width:75px;min-height:80px;font-size:24px}.cell small{display:block;font-size:14px;color:#475569}.selected{background:#ddd6fe;border-color:#7c3aed}.found{background:#bbf7d0}#feedback{min-height:55px;padding:16px;background:#e2e8f0;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere}#history{max-height:200px;overflow:auto}</style></head><body><main id=experiment>
+  <h1>${game ? '两数之和：下标配对挑战' : '两数之和：哈希查找逐步模拟'}</h1>
+  <p>${game ? '点击两个不同的数组位置，使它们的和等于目标值。返回的是下标，不能重复使用同一个位置。' : '逐步观察当前值、所需补数与哈希表。先查补数再记录当前元素，避免重复使用同一下标。'}</p>
+  <label>整数数组<input id="nums" aria-label="整数数组" value="2,7,11,15"></label><label>目标和<input id="target" aria-label="目标和" type="number" value="9"></label>
+  <div><button id="reset">应用输入 / 重新开始</button><button id="step">${game ? '检查所选下标' : '下一步'}</button><button id="start">${game ? '新一轮挑战' : '自动演示'}</button><button id="pause">暂停</button></div>
+  <div id="cells" class="cells"></div><div id="feedback" role="status" aria-live="polite"></div><pre id="history"></pre>
+  </main><script>
+  (()=>{'use strict';const game=${game};const byId=id=>document.getElementById(id);const cells=byId('cells'),feedback=byId('feedback'),history=byId('history');let nums=[],target=0,index=0,seen=new Map(),selected=[],done=false,timer=null,score=0;
+  function stop(){if(timer!==null){clearInterval(timer);timer=null;}}
+  function publish(){if(typeof window.publishState==='function')window.publishState({topic:'两数之和',mode:game?'game':'simulation',nums,target,index,selected,done,score,summary:feedback.textContent});}
+  function draw(){cells.replaceChildren();nums.forEach((value,i)=>{const b=document.createElement('button');b.className='cell'+(selected.includes(i)?' selected':'')+(done&&selected.includes(i)?' found':'');b.type='button';b.setAttribute('aria-label','下标 '+i+'，数值 '+value);b.textContent=String(value);const small=document.createElement('small');small.textContent='下标 '+i;b.append(small);b.disabled=!game||done;b.onclick=()=>{if(selected.includes(i))selected=selected.filter(v=>v!==i);else if(selected.length<2)selected.push(i);draw();feedback.textContent='已选下标：'+JSON.stringify(selected);publish();};cells.append(b);});}
+  function reset(){stop();const raw=byId('nums').value.trim();const parts=raw?raw.split(/[,，\\s]+/):[];const next=parts.map(Number);const targetText=byId('target').value.trim();const nextTarget=Number(targetText);if(!targetText||parts.length<2||parts.length>30||next.some(v=>!Number.isSafeInteger(v))||!Number.isSafeInteger(nextTarget)){feedback.textContent='请输入 2–30 个安全范围内整数，以逗号分隔，并填写整数目标和。';return;}nums=next;target=nextTarget;index=0;seen=new Map();selected=[];done=false;history.textContent='';feedback.textContent=game?'请选择两个不同下标。当前得分：'+score:'点击下一步，观察补数查找。';draw();publish();}
+  function step(){if(done)return;if(game){if(selected.length!==2){feedback.textContent='请先选择两个不同下标。';publish();return;}const [a,b]=selected;if(nums[a]+nums[b]===target){done=true;score++;feedback.textContent='配对成功！下标 '+JSON.stringify(selected)+'，'+nums[a]+' + '+nums[b]+' = '+target+'。得分：'+score;}else feedback.textContent='暂未匹配：'+nums[a]+' + '+nums[b]+' 不等于 '+target+'，请重新选择。';draw();publish();return;}if(index>=nums.length){done=true;stop();feedback.textContent='遍历结束：没有满足条件的两个不同下标，返回 []。';publish();return;}const value=nums[index],need=target-value;history.textContent+='下标 '+index+'：当前值 '+value+'，补数 '+need+'；此前记录 '+JSON.stringify([...seen])+'\\n';if(seen.has(need)){selected=[seen.get(need),index];done=true;stop();feedback.textContent='找到答案：下标 '+JSON.stringify(selected)+'，'+need+' + '+value+' = '+target;}else{seen.set(value,index);feedback.textContent='未找到补数 '+need+'，记录 '+value+' → 下标 '+index+'。';index++;}draw();publish();}
+  byId('reset').onclick=reset;byId('step').onclick=step;byId('pause').onclick=stop;byId('start').onclick=()=>{if(game){const rounds=[[[3,3],6],[[3,2,4],6],[[-3,4,3,90],0]];const round=rounds[score%rounds.length];byId('nums').value=round[0].join(',');byId('target').value=String(round[1]);reset();}else if(timer===null&&!done)timer=setInterval(step,900);};window.addEventListener('pagehide',stop);reset();})();
+  </script></body></html>`;
+}

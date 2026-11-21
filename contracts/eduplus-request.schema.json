@@ -1,0 +1,17 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "prompt": {
+      "maxLength": 12000,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Prompt",
+      "type": "string"
+    }
+  },
+  "required": [
+    "prompt"
+  ],
+  "title": "GenerateRequest",
+  "type": "object"
+}

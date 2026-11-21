@@ -1,0 +1,197 @@
+{
+  "$defs": {
+    "AlgorithmTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "exampleCaseId": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Examplecaseid",
+          "type": "string"
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/TraceStep"
+          },
+          "maxItems": 16,
+          "minItems": 2,
+          "title": "Steps",
+          "type": "array"
+        },
+        "outcome": {
+          "$ref": "#/$defs/JsonValue"
+        }
+      },
+      "required": [
+        "exampleCaseId",
+        "steps",
+        "outcome"
+      ],
+      "title": "AlgorithmTrace",
+      "type": "object"
+    },
+    "JsonValue": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "array"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "TeachingQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Options",
+          "type": "array"
+        },
+        "answer": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "title": "Answer",
+          "type": "string"
+        },
+        "analysis": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Analysis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question",
+        "options",
+        "answer",
+        "analysis"
+      ],
+      "title": "TeachingQuestion",
+      "type": "object"
+    },
+    "TraceStep": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "explanation": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 18,
+          "minItems": 1,
+          "title": "Values",
+          "type": "array"
+        },
+        "activeIndices": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 18,
+          "title": "Activeindices",
+          "type": "array"
+        }
+      },
+      "required": [
+        "label",
+        "explanation",
+        "values",
+        "activeIndices"
+      ],
+      "title": "TraceStep",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "overview": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Overview",
+      "type": "string"
+    },
+    "demoExplanation": {
+      "maxLength": 6000,
+      "minLength": 1,
+      "title": "Demoexplanation",
+      "type": "string"
+    },
+    "questions": {
+      "items": {
+        "$ref": "#/$defs/TeachingQuestion"
+      },
+      "maxItems": 6,
+      "minItems": 3,
+      "title": "Questions",
+      "type": "array"
+    },
+    "algorithmTrace": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AlgorithmTrace"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "overview",
+    "demoExplanation",
+    "questions"
+  ],
+  "title": "ClassroomTeaching",
+  "type": "object"
+}

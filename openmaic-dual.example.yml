@@ -1,0 +1,37 @@
+# This file documents the local-only, fixed task routing of the dual-model main workspace.
+providers:
+  local:
+    preset: ollama
+    baseUrl: http://127.0.0.1:11436/v1
+    models: [qwen2.5-coder:7b, openmaic-gemma4-e4b:dual-16k]
+  browser-voice:
+    preset: browser-native-tts
+  browser-mic:
+    preset: browser-native
+slots:
+  llm: local:qwen2.5-coder:7b
+  course.outline: local:qwen2.5-coder:7b
+  course.content.slide:
+    model: local:openmaic-gemma4-e4b:dual-16k
+    thinking:
+      enabled: false
+  course.actions:
+    model: local:openmaic-gemma4-e4b:dual-16k
+    thinking:
+      enabled: false
+  course.content.quiz: local:qwen2.5-coder:7b
+  course.content.interactive: local:qwen2.5-coder:7b
+  classroom: local:qwen2.5-coder:7b
+  agent:
+    model: local:qwen2.5-coder:7b
+    api: openai-completions
+    contextWindow: 4096
+  agent.title: local:qwen2.5-coder:7b
+  tts: browser-voice
+  asr: browser-mic
+  image: null
+  video: null
+  webSearch: null
+  document: null
+lock: all
+allowUserKeys: false

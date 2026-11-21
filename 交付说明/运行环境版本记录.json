@@ -1,0 +1,40 @@
+{
+  "打包时间": "20261029-032320",
+  "Node.js": "v24.21.0",
+  "pnpm": "10.28.0",
+  "Python": "3.11.5",
+  "Ollama": "ollama version is 0.40.11",
+  "Ollama 模型": "NAME                               ID              SIZE      MODIFIED     \nopenmaic-qwen2.5-coder:dual-16k    642ce4438200    4.7 GB    3 days ago      \nopenmaic-gemma4-e4b:dual-16k       497c709ffe2d    6.1 GB    4 days ago      \nopenmaic-gemma4-e4b:dual-8k        5dd84f4125dc    6.1 GB    4 days ago      \ngemma4:e4b-it-qat                  ee6656371218    6.1 GB    4 days ago      \nqwen2.5-coder:7b-ctx16384          642ce4438200    4.7 GB    4 days ago      \nqwen2.5-coder:7b                   dae161e27b0e    4.7 GB    3 months ago",
+  "PostgreSQL": "postgres (PostgreSQL) 15.19",
+  "浏览器资源": {
+    "pyodide": "0.29.3",
+    "monaco": "未准备"
+  },
+  "预置算法目录条数": "78",
+  "前端直接依赖数": 167,
+  "Python安装依赖数": 83,
+  "前端关键依赖": {
+    "next": "16.3.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "typescript": "5.9.3",
+    "katex": "0.16.47",
+    "echarts": "6.1.0",
+    "i18next": "26.4.4",
+    "pptxgenjs": "4.0.1",
+    "mathml2omml": "0.5.0",
+    "@earendil-works/pi-agent-core": "0.78.0",
+    "@earendil-works/pi-ai": "0.78.0"
+  },
+  "Python关键依赖": {
+    "fastapi": "0.143.0",
+    "uvicorn": "0.54.0",
+    "httpx": "0.28.1",
+    "pydantic": "2.14.1",
+    "langgraph": "1.2.14",
+    "langchain-core": "1.6.9",
+    "tenacity": "9.2.1",
+    "nbformat": "5.11.1",
+    "pytest": "9.1.1"
+  }
+}

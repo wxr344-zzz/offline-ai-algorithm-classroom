@@ -1,0 +1,54 @@
+{
+  "overview": "列表是有序集合。遍历时应处理空列表、负数，并保持返回值类型一致。",
+  "demoExplanation": "比较公开示例的输入和输出，注意负数会影响求和结果。",
+  "questions": [
+    {
+      "question": "Python 空列表求和的结果是什么？",
+      "options": ["0", "1", "None", "必定报错"],
+      "answer": "A",
+      "analysis": "求和的单位元是 0，因此空列表求和返回 0。"
+    },
+    {
+      "question": "整数列表求和的返回值类型是什么？",
+      "options": ["str", "int", "list", "bool"],
+      "answer": "B",
+      "analysis": "整数相加的结果仍然是整数。"
+    },
+    {
+      "question": "哪个输入最适合检查负数边界？",
+      "options": ["[1, 2]", "[0]", "[-1, -2]", "[]"],
+      "answer": "C",
+      "analysis": "包含负数的输入能验证负数的处理。"
+    }
+  ],
+  "algorithmTrace": {
+    "exampleCaseId": "public-normal",
+    "outcome": 6,
+    "steps": [
+      {
+        "label": "初始化",
+        "explanation": "累计值从 0 开始。",
+        "values": ["0", "1,2,3"],
+        "activeIndices": [0]
+      },
+      {
+        "label": "处理第一个元素",
+        "explanation": "将 1 加入累计值。",
+        "values": ["1", "1,2,3"],
+        "activeIndices": [0]
+      },
+      {
+        "label": "处理第二个元素",
+        "explanation": "继续加上 2。",
+        "values": ["3", "1,2,3"],
+        "activeIndices": [0]
+      },
+      {
+        "label": "处理第三个元素",
+        "explanation": "加上 3，完成求和。",
+        "values": ["6", "1,2,3"],
+        "activeIndices": [0]
+      }
+    ]
+  }
+}

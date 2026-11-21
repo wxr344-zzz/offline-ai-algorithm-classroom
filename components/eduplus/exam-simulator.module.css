@@ -1,0 +1,315 @@
+.simulator {
+  height: 100%;
+  overflow: auto;
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 28px clamp(20px, 4vw, 64px);
+  font-size: 16px;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+.simulator h2 {
+  font-size: 28px;
+  font-weight: 750;
+  margin: 0 0 12px;
+}
+.simulator h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.simulator p {
+  margin: 8px 0 16px;
+}
+.simulator button,
+.simulator select {
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  padding: 8px 14px;
+  background: white;
+  color: #0f172a;
+  cursor: pointer;
+}
+.simulator button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.simulator button:hover:enabled {
+  background: #ede9fe;
+}
+.input {
+  padding: 12px 0;
+  margin-bottom: 16px;
+}
+.input summary {
+  cursor: pointer;
+}
+.input label {
+  display: block;
+  margin: 12px 0;
+}
+.input select,
+.input input {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+}
+.input textarea {
+  display: block;
+  background: white;
+  color: #0f172a;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  font-family: monospace;
+  box-sizing: border-box;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.range {
+  width: 100%;
+  margin: 16px 0;
+  accent-color: #7c3aed;
+}
+.explanation {
+  padding: 20px;
+  background: #ede9fe;
+  border-left: 5px solid #7c3aed;
+  border-radius: 8px;
+  margin: 10px 0 20px;
+}
+.explanation p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.view {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 18px;
+  background: white;
+  margin: 16px 0;
+}
+.sequence {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.seqCell {
+  text-align: center;
+  min-width: 62px;
+}
+.seqCell small {
+  color: #64748b;
+}
+.cell {
+  min-width: 54px;
+  min-height: 48px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.pointer {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  color: #6d28d9;
+  font-weight: 650;
+  font-size: 13px;
+  min-height: 25px;
+}
+.active {
+  background: #ddd6fe !important;
+  color: #3b0764;
+}
+.dependency {
+  background: #fef3c7 !important;
+}
+.changed {
+  outline: 2px solid #16a34a;
+  outline-offset: -2px;
+}
+.boundaries {
+  display: flex;
+  gap: 16px;
+  color: #92400e;
+}
+.scroll,
+.topology {
+  overflow: auto;
+  max-width: 100%;
+}
+.scroll table {
+  border-collapse: collapse;
+  min-width: fit-content;
+  font-variant-numeric: tabular-nums;
+}
+.scroll th,
+.scroll td {
+  border: 1px solid #cbd5e1;
+  text-align: center;
+  padding: 8px 12px;
+  min-width: 48px;
+  white-space: nowrap;
+}
+.scroll th {
+  background: #f1f5f9;
+  font-weight: 650;
+}
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.group {
+  border: 1px dashed #94a3b8;
+  border-radius: 10px;
+  padding: 12px;
+}
+.group h4 {
+  font-weight: 650;
+  margin: 0 0 10px;
+}
+.empty {
+  color: #64748b;
+}
+.tuple {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.record {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+.error {
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Ordering game: step cards, answer area and controls never touch. */
+.cardDeck {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+.simulator .stepCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 96px;
+  height: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #ffffff;
+  text-align: left;
+  line-height: 1.55;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.simulator .stepCard:hover:enabled {
+  background: #f5f3ff;
+  border-color: #7c3aed;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.15);
+}
+.stepCard strong {
+  color: #5b21b6;
+  font-size: 14px;
+}
+.stepCard span {
+  color: #334155;
+  font-size: 14px;
+  line-break: strict;
+}
+.answerTitle {
+  margin: 4px 0 8px;
+  font-size: 15px;
+}
+.answerList {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.answerList li {
+  counter-increment: step;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+  padding: 10px 12px 10px 44px;
+  position: relative;
+  border: 1px solid #ddd6fe;
+  border-radius: 10px;
+  background: #faf5ff;
+  line-height: 1.5;
+}
+.answerList li::before {
+  content: counter(step);
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #7c3aed;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.answerList strong {
+  color: #5b21b6;
+}
+.answerEmpty {
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  color: #64748b;
+  text-align: center;
+}
+.gameControls {
+  margin-top: 4px;
+}
+.gameFeedback {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.gamePass {
+  background: #ecfdf5;
+  color: #047857;
+}
+.gameFail {
+  background: #fef2f2;
+  color: #b91c1c;
+}

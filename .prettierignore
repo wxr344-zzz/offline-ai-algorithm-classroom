@@ -1,0 +1,37 @@
+# Dependencies & lock files
+pnpm-lock.yaml
+node_modules/
+
+# Vendor packages
+packages/pptxgenjs/
+packages/mathml2omml/
+
+# @openmaic workspace packages: the source is formatted to the root style, but skip
+# generated build output and the vendored legacy reference under the importer.
+packages/@openmaic/*/dist/
+packages/@openmaic/importer/src1/
+
+# Docs site (separate Fumadocs app with its own toolchain)
+packages/docs/
+
+# Build output
+.next/
+out/
+
+# Generated files
+*.min.js
+*.min.css
+# Canonical Python-generated schemas; checked by scripts/export_lab_contracts.py --check
+contracts/*.schema.json
+# Python-generated algorithm data (exam_simulator/catalog_snapshot.py and
+# scripts/export-algorithm-quiz-snapshots.py); regenerate rather than reformat
+lib/eduplus/exam-simulator-catalog.json
+lib/server/generation/steps/algorithm-quiz-snapshots.generated.json
+
+# Markdown & YAML
+*.md
+*.yml
+*.yaml
+
+# SVG arc helper (vendored declaration)
+lib/export/svg-arc-to-cubic-bezier.d.ts

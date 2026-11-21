@@ -1,0 +1,871 @@
+{
+  "$defs": {
+    "EntryPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "className": {
+          "const": "Solution",
+          "default": "Solution",
+          "title": "Classname",
+          "type": "string"
+        },
+        "methodName": {
+          "const": "solve",
+          "default": "solve",
+          "title": "Methodname",
+          "type": "string"
+        },
+        "parameters": {
+          "items": {
+            "$ref": "#/$defs/Parameter"
+          },
+          "minItems": 1,
+          "title": "Parameters",
+          "type": "array"
+        },
+        "returnType": {
+          "enum": [
+            "int",
+            "str",
+            "bool",
+            "list[int]",
+            "list[str]",
+            "list[bool]"
+          ],
+          "title": "Returntype",
+          "type": "string"
+        }
+      },
+      "required": [
+        "className",
+        "methodName",
+        "parameters",
+        "returnType"
+      ],
+      "title": "EntryPoint",
+      "type": "object"
+    },
+    "ExecutionPolicy": {
+      "additionalProperties": false,
+      "description": "声明期望限制；实际执行/强制限制属于后续运行器。",
+      "properties": {
+        "timeoutMs": {
+          "default": 3000,
+          "maximum": 30000,
+          "minimum": 100,
+          "title": "Timeoutms",
+          "type": "integer"
+        },
+        "maxOutputChars": {
+          "default": 20000,
+          "maximum": 100000,
+          "minimum": 100,
+          "title": "Maxoutputchars",
+          "type": "integer"
+        },
+        "networkAllowed": {
+          "const": false,
+          "default": false,
+          "title": "Networkallowed",
+          "type": "boolean"
+        },
+        "comparison": {
+          "const": "exact",
+          "default": "exact",
+          "title": "Comparison",
+          "type": "string"
+        }
+      },
+      "required": [
+        "timeoutMs",
+        "maxOutputChars",
+        "networkAllowed",
+        "comparison"
+      ],
+      "title": "ExecutionPolicy",
+      "type": "object"
+    },
+    "FinalOutput": {
+      "additionalProperties": false,
+      "description": "工作流内部结果：兼容旧 lab 导出格式，新增私有双页题目。",
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "course_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Course Id",
+          "type": "string"
+        },
+        "topic": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Topic",
+          "type": "string"
+        },
+        "requires_lab": {
+          "title": "Requires Lab",
+          "type": "boolean"
+        },
+        "lesson_plan": {
+          "$ref": "#/$defs/LessonPlan"
+        },
+        "common_mistakes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Common Mistakes",
+          "type": "array"
+        },
+        "lab": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LabSpec"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "problem": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrivateProblem"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "const": "ready",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "course_id",
+        "topic",
+        "requires_lab",
+        "lesson_plan",
+        "common_mistakes",
+        "lab",
+        "problem",
+        "status"
+      ],
+      "title": "FinalOutput",
+      "type": "object"
+    },
+    "GuidedLabScene": {
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "courseId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Courseid",
+          "type": "string"
+        },
+        "sceneId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Sceneid",
+          "type": "string"
+        },
+        "language": {
+          "const": "python",
+          "default": "python",
+          "title": "Language",
+          "type": "string"
+        },
+        "markdownContent": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Markdowncontent",
+          "type": "string"
+        },
+        "interactiveCode": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Interactivecode",
+          "type": "string"
+        },
+        "problem": {
+          "$ref": "#/$defs/PublicProblem"
+        },
+        "sceneType": {
+          "const": "guided-lab",
+          "default": "guided-lab",
+          "title": "Scenetype",
+          "type": "string"
+        },
+        "template": {
+          "const": "guided-lab-v1",
+          "default": "guided-lab-v1",
+          "title": "Template",
+          "type": "string"
+        },
+        "teachingSteps": {
+          "items": {
+            "$ref": "#/$defs/TeachingStep"
+          },
+          "minItems": 1,
+          "title": "Teachingsteps",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "courseId",
+        "sceneId",
+        "language",
+        "markdownContent",
+        "interactiveCode",
+        "problem",
+        "sceneType",
+        "template",
+        "teachingSteps"
+      ],
+      "title": "GuidedLabScene",
+      "type": "object"
+    },
+    "JsonValue": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "object"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "type": "array"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LabSpec": {
+      "additionalProperties": false,
+      "description": "保留旧导出器的内部输入格式；禁止直接作为学生 HTTP 响应。",
+      "properties": {
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "instructions": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Instructions",
+          "type": "string"
+        },
+        "files": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Files",
+          "type": "object"
+        },
+        "reference_solution": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reference Solution",
+          "type": "string"
+        },
+        "grading": {
+          "additionalProperties": true,
+          "title": "Grading",
+          "type": "object"
+        }
+      },
+      "required": [
+        "title",
+        "instructions",
+        "files",
+        "reference_solution",
+        "grading"
+      ],
+      "title": "LabSpec",
+      "type": "object"
+    },
+    "LessonPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "objectives": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Objectives",
+          "type": "array"
+        },
+        "knowledge_points": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Knowledge Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "objectives",
+        "knowledge_points"
+      ],
+      "title": "LessonPlan",
+      "type": "object"
+    },
+    "OJLabScene": {
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "courseId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Courseid",
+          "type": "string"
+        },
+        "sceneId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Sceneid",
+          "type": "string"
+        },
+        "language": {
+          "const": "python",
+          "default": "python",
+          "title": "Language",
+          "type": "string"
+        },
+        "markdownContent": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Markdowncontent",
+          "type": "string"
+        },
+        "interactiveCode": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Interactivecode",
+          "type": "string"
+        },
+        "problem": {
+          "$ref": "#/$defs/PublicProblem"
+        },
+        "sceneType": {
+          "const": "oj-lab",
+          "default": "oj-lab",
+          "title": "Scenetype",
+          "type": "string"
+        },
+        "template": {
+          "const": "oj-lab-v1",
+          "default": "oj-lab-v1",
+          "title": "Template",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "courseId",
+        "sceneId",
+        "language",
+        "markdownContent",
+        "interactiveCode",
+        "problem",
+        "sceneType",
+        "template"
+      ],
+      "title": "OJLabScene",
+      "type": "object"
+    },
+    "Parameter": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+          "title": "Name",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "int",
+            "str",
+            "bool",
+            "list[int]",
+            "list[str]",
+            "list[bool]"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "type"
+      ],
+      "title": "Parameter",
+      "type": "object"
+    },
+    "PrivateAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "hidden_test_cases": {
+          "items": {
+            "$ref": "#/$defs/TestCase"
+          },
+          "minItems": 3,
+          "title": "Hidden Test Cases",
+          "type": "array"
+        },
+        "reference_solution": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reference Solution",
+          "type": "string"
+        },
+        "pytest_source": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Pytest Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "hidden_test_cases",
+        "reference_solution",
+        "pytest_source"
+      ],
+      "title": "PrivateAssessment",
+      "type": "object"
+    },
+    "PrivateProblem": {
+      "additionalProperties": false,
+      "description": "仅供服务端存储和判题；学生数据显式从 scenes 投影。",
+      "properties": {
+        "guided_scene": {
+          "$ref": "#/$defs/GuidedLabScene"
+        },
+        "oj_scene": {
+          "$ref": "#/$defs/OJLabScene"
+        },
+        "hidden_test_cases": {
+          "items": {
+            "$ref": "#/$defs/TestCase"
+          },
+          "minItems": 3,
+          "title": "Hidden Test Cases",
+          "type": "array"
+        },
+        "reference_solution": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reference Solution",
+          "type": "string"
+        },
+        "pytest_source": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Pytest Source",
+          "type": "string"
+        },
+        "oj_assessment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrivateAssessment"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "quality_status": {
+          "const": "static-validated",
+          "default": "static-validated",
+          "title": "Quality Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "guided_scene",
+        "oj_scene",
+        "hidden_test_cases",
+        "reference_solution",
+        "pytest_source"
+      ],
+      "title": "PrivateProblem",
+      "type": "object"
+    },
+    "PublicCourse": {
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "courseId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Courseid",
+          "type": "string"
+        },
+        "topic": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Topic",
+          "type": "string"
+        },
+        "requiresLab": {
+          "title": "Requireslab",
+          "type": "boolean"
+        },
+        "lessonPlan": {
+          "$ref": "#/$defs/PublicLessonPlan"
+        },
+        "commonMistakes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Commonmistakes",
+          "type": "array"
+        },
+        "generationStatus": {
+          "const": "generated",
+          "default": "generated",
+          "title": "Generationstatus",
+          "type": "string"
+        },
+        "qualityStatus": {
+          "const": "static-validated",
+          "default": "static-validated",
+          "title": "Qualitystatus",
+          "type": "string"
+        },
+        "scenes": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "guided-lab": "#/$defs/GuidedLabScene",
+                "oj-lab": "#/$defs/OJLabScene"
+              },
+              "propertyName": "sceneType"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/GuidedLabScene"
+              },
+              {
+                "$ref": "#/$defs/OJLabScene"
+              }
+            ]
+          },
+          "title": "Scenes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "courseId",
+        "topic",
+        "requiresLab",
+        "lessonPlan",
+        "commonMistakes",
+        "generationStatus",
+        "qualityStatus",
+        "scenes"
+      ],
+      "title": "PublicCourse",
+      "type": "object"
+    },
+    "PublicLessonPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "objectives": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Objectives",
+          "type": "array"
+        },
+        "knowledgePoints": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Knowledgepoints",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "objectives",
+        "knowledgePoints"
+      ],
+      "title": "PublicLessonPlan",
+      "type": "object"
+    },
+    "PublicProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "problemId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Problemid",
+          "type": "string"
+        },
+        "problemVersion": {
+          "minimum": 1,
+          "title": "Problemversion",
+          "type": "integer"
+        },
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "instructions": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Instructions",
+          "type": "string"
+        },
+        "difficulty": {
+          "enum": [
+            "Easy",
+            "Medium",
+            "Hard"
+          ],
+          "title": "Difficulty",
+          "type": "string"
+        },
+        "constraints": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Constraints",
+          "type": "array"
+        },
+        "entryPoint": {
+          "$ref": "#/$defs/EntryPoint"
+        },
+        "publicTestCases": {
+          "items": {
+            "$ref": "#/$defs/TestCase"
+          },
+          "minItems": 1,
+          "title": "Publictestcases",
+          "type": "array"
+        },
+        "executionPolicy": {
+          "$ref": "#/$defs/ExecutionPolicy"
+        },
+        "executionMode": {
+          "default": "function",
+          "enum": [
+            "function",
+            "stdio"
+          ],
+          "title": "Executionmode",
+          "type": "string"
+        },
+        "standardIoProfile": {
+          "anyOf": [
+            {
+              "enum": [
+                "budget-pair",
+                "tree-traversals",
+                "knapsack",
+                "knapsack-minweight",
+                "delivery-deadline"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Standardioprofile"
+        },
+        "answerCheck": {
+          "anyOf": [
+            {
+              "enum": [
+                "lcs-string",
+                "lcs-edit-budget",
+                "capped-matches",
+                "json-value"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Answercheck"
+        }
+      },
+      "required": [
+        "problemId",
+        "problemVersion",
+        "title",
+        "instructions",
+        "difficulty",
+        "constraints",
+        "entryPoint",
+        "publicTestCases",
+        "executionPolicy"
+      ],
+      "title": "PublicProblem",
+      "type": "object"
+    },
+    "TeachingStep": {
+      "additionalProperties": false,
+      "properties": {
+        "stepId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Stepid",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "instruction": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Instruction",
+          "type": "string"
+        },
+        "hint": {
+          "default": "",
+          "title": "Hint",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stepId",
+        "title",
+        "instruction",
+        "hint"
+      ],
+      "title": "TeachingStep",
+      "type": "object"
+    },
+    "TestCase": {
+      "additionalProperties": false,
+      "properties": {
+        "caseId": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Caseid",
+          "type": "string"
+        },
+        "inputs": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Inputs",
+          "type": "object"
+        },
+        "expected": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "description": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "caseId",
+        "inputs",
+        "expected",
+        "description"
+      ],
+      "title": "TestCase",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "仅供已认证的 Next.js 服务与 Python 传输；不能作为浏览器响应。",
+  "properties": {
+    "publicCourse": {
+      "$ref": "#/$defs/PublicCourse"
+    },
+    "privateOutput": {
+      "$ref": "#/$defs/FinalOutput"
+    }
+  },
+  "required": [
+    "publicCourse",
+    "privateOutput"
+  ],
+  "title": "GeneratedCourse",
+  "type": "object"
+}
